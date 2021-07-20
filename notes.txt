@@ -1,0 +1,16 @@
+//APPLICATION ENDPOINTS 
+
+GET https://jsonplaceholder.typicode.com/posts
+Devuelve un listado de posts
+
+GET https://jsonplaceholder.typicode.com/posts/:id
+Devuelve el detalle de un post en base al id especificado en el parámetro
+
+POST https://jsonplaceholder.typicode.com/posts
+Simula la creación de un nuevo post
+
+PUT/PATCH https://jsonplaceholder.typicode.com/posts/:id
+Simula la actualización de un post en base al id especificado en el parámetro
+
+DELETE https://jsonplaceholder.typicode.com/posts/:id
+Simula la eliminación de un post en base al id especificado en el parámetro
