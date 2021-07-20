@@ -3,10 +3,14 @@ import React from 'react';
 //ROUTING
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
+
+//PAGES
+
 import Details from './pages/Details';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import PageNotFound from './pages/PageNotFound';
+import AddPost from './pages/AddPost';
+import EditPost from './pages/EditPost';
 
 function App() {
   return (
@@ -22,6 +26,12 @@ function App() {
           </Route>
           <Route path="/:id">
             <Details />
+          </Route>
+          <Route path="/add">
+            <AddPost />
+          </Route>
+          <Route path="/edit/:id">
+            <EditPost />
           </Route>
         </Switch>
       </Router>
