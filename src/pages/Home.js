@@ -3,6 +3,7 @@ import '../styles/Home.css';
 
 //COMPONENTS
 import Post from '../components/Post/Post';
+import Navbar from '../components/Navbar/Navbar';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -27,12 +28,18 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="blog__container">
-      <h1>Daily Blog</h1>
-      <div className="blog__posts">
-        {posts && posts.map((post) => <Post posts={post} key={post.id} />)}
+    <>
+      <Navbar />
+      <div className="blog__container">
+        <h1>Daily Blog</h1>
+        <div className="blog__posts">
+          {posts &&
+            posts
+              .map((post) => <Post posts={post} key={post.id} />)
+              .slice(0, 10)}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

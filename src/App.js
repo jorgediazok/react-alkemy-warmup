@@ -2,7 +2,6 @@ import React from 'react';
 
 //ROUTING
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar';
 
 //PAGES
 
@@ -16,7 +15,6 @@ function App() {
   return (
     <div>
       <Router>
-        <Navbar />
         <Switch>
           <Route path="/login">
             <Login />
