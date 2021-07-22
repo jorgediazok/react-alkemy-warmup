@@ -5,6 +5,9 @@ import '../styles/Home.css';
 import Post from '../components/Post/Post';
 import Navbar from '../components/Navbar/Navbar';
 
+//AUTH
+import Auth from '../auth/Auth';
+
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(false);
@@ -29,16 +32,18 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="blog__container">
-        <h1>Daily Blog</h1>
-        <div className="blog__posts">
-          {posts &&
-            posts
-              .map((post) => <Post posts={post} key={post.id} />)
-              .slice(0, 10)}
+      <Auth>
+        <Navbar />
+        <div className="blog__container">
+          <h1>Daily Blog</h1>
+          <div className="blog__posts">
+            {posts &&
+              posts
+                .map((post) => <Post posts={post} key={post.id} />)
+                .slice(0, 10)}
+          </div>
         </div>
-      </div>
+      </Auth>
     </>
   );
 };

@@ -1,0 +1,9 @@
+.card {
+  height: 400px;
+  width: 250px;
+  border-radius: 30px;
+}
+
+.card__img {
+  width: 250px;
+}
