@@ -10,6 +10,7 @@ import Auth from '../auth/Auth';
 
 //COMPONENTS
 import Navbar from '../components/Navbar/Navbar';
+import Image from '../images/post.png';
 
 //STYLES
 import '../styles/Details.css';
@@ -47,6 +48,7 @@ const Details = () => {
           <div className="card text-center">
             <div className="card-header">BLOG ARTICLE N° {post.id}</div>
             <div className="card-body">
+              <img src={Image} alt="" />
               <h5 className="card-title">{post.title}</h5>
               <p className="card-text">{post.body}</p>
               <Link to="/" className="btn btn-primary">

@@ -1,3 +1,7 @@
+.navbar {
+  border-radius: 5px;
+}
+
 .navbar-brand {
   color: #fff !important;
 }
@@ -9,4 +13,10 @@
 
 .navbar-logout {
   cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .navbar-brand {
+    font-size: 0.9rem;
+  }
 }

@@ -12,6 +12,13 @@ import Auth from '../auth/Auth';
 //STYLES
 import '../styles/EditPost.css';
 
+//TOAST
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+//TOAST CONFIGURATION
+toast.configure();
+
 const EditPost = () => {
   //STATES
   const [title, setTitle] = useState('');
@@ -23,6 +30,11 @@ const EditPost = () => {
   const location = useLocation();
   const id = location.pathname.split('/').pop();
 
+  //TOAST FUNCTION
+  const notify = () => {
+    toast('Post Updated Succesfully', { position: toast.POSITION.TOP_RIGHT });
+  };
+
   //GET POST
   const fetchPost = async (id) => {
     try {
@@ -33,7 +45,7 @@ const EditPost = () => {
       setDescription(data.data.body);
     } catch (error) {
       setError(true);
-      console.log(error);
+      setError('Something went', error.response.data.message);
     }
   };
 
@@ -48,9 +60,12 @@ const EditPost = () => {
         title,
         description,
       });
+      history.push('/');
+      notify();
     } catch (error) {
-      setError(true);
-      console.log(error);
+      if (error && error.response) {
+        setError('Something went', error.response.data.message);
+      }
     }
   };
 
@@ -60,6 +75,7 @@ const EditPost = () => {
         <Navbar />
         <div className="form-container">
           <form className="form">
+            {error && error}
             <div className="form-group">
               <label htmlFor="exampleFormControlInput1">Title</label>
               <input
@@ -69,7 +85,6 @@ const EditPost = () => {
                 onChange={(e) => setTitle(e.target.value)}
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="exampleFormControlTextarea1">Edit Post</label>
               <textarea
@@ -78,11 +93,10 @@ const EditPost = () => {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}></textarea>
             </div>
-
             <button
-              type="submit"
+              type="button"
               className="btn btn-primary btn-add"
-              onClick={updatePost}>
+              onClick={() => updatePost(id)}>
               Edit
             </button>
           </form>

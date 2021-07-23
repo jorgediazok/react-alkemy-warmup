@@ -14,21 +14,15 @@ function App() {
     <div>
       <Router>
         <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/add">
-            <AddPost />
-          </Route>
-          <Route path="/edit/:id">
-            <EditPost />
-          </Route>
-          <Route path="/:id">
-            <Details />
-          </Route>
+          <Route path="/login" component={Login} />
+
+          <Route exact path="/" component={Home} />
+
+          <Route exact path="/add" component={AddPost} />
+
+          <Route path="/edit/:id" component={EditPost} />
+
+          <Route path="/:id" component={Details} />
         </Switch>
       </Router>
     </div>

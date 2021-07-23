@@ -11,7 +11,13 @@
   border-bottom-left-radius: 30px;
 }
 
-@media screen and (max-width: 450px) {
+.login-title {
+  font-family: 'Lobster', cursive;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+@media screen and (max-width: 750px) {
   form {
     margin-left: -15px;
   }
@@ -22,12 +28,11 @@
     border-bottom-right-radius: 0px;
     border-top-right-radius: 30px;
   }
-}
 
-.login h1 {
-  font-family: 'Lobster', cursive;
-  font-weight: 700;
-  font-size: 3rem;
+  .login-title {
+    margin-top: -120px;
+    font-size: 2rem;
+  }
 }
 
 .input-email,
@@ -40,6 +45,10 @@
   box-shadow: -1px 1px 30px -11px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: -1px 1px 30px -11px (rgba(0, 0, 0, 0.75));
   -moz-box-shadow: -1px 1px 30px -11px (rgba(0, 0, 0, 0.75));
+}
+
+.input-password {
+  margin-bottom: 15px;
 }
 
 .btn-login {

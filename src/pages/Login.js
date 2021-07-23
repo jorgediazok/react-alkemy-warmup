@@ -91,13 +91,11 @@ const Login = () => {
             <img src={Image} alt="" className="img-fluid" />
           </div>
           <div className="col-lg-7 com-md-7 com-sm-12 col-12 text-center py-5">
-            <h1 className="animate__animated animate__zoomInDown animate__delay-0.7s">
-              Your Daily Blog
-            </h1>
+            <h1 className="login-title">Your Daily Blog</h1>
             <form onSubmit={formik.handleSubmit}>
+              {!error && success ? success : ''}
+              {!success && error ? error : ''}
               <div className="form-row pt-4">
-                {!error && success ? success : ''}
-                {!success && error ? error : ''}
                 <div className="offset-1 col-lg-10">
                   <input
                     id="email"

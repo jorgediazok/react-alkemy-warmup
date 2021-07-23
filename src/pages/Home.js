@@ -35,12 +35,9 @@ const Home = () => {
       const data = await axios.get(
         'https://jsonplaceholder.typicode.com/posts'
       );
-      // ).then((response) => response.json());
       setPosts(data.data);
     } catch (error) {
-      setError(true);
-      console.log('Something Went Wrong', error.response.data.message);
-      setError(true);
+      setError('Something went wrong.', error.response.data.message);
     }
   };
 
@@ -62,8 +59,7 @@ const Home = () => {
       //TOASTY
       notify();
     } catch (error) {
-      console.log('Something went wrong.', error.response.data.message);
-      setError(true);
+      setError('Something went wrong.', error.response.data.message);
     }
   };
 
@@ -75,7 +71,7 @@ const Home = () => {
           <header>
             <h1>Your Daily Blog ✍ </h1>
           </header>
-          {error && <p>Something went wrong. Please refresh the page.</p>}
+          {error && error}
           <div className="blog__left">
             {posts &&
               posts

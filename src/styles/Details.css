@@ -2,7 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+}
+
+.card-title {
+  margin-top: 20px !important;
 }
 
 .card-header {

@@ -60,8 +60,7 @@ const AddPost = () => {
       }
     } catch (error) {
       if (error && error.response) {
-        console.log('Something Went Wrong', error.response.data.message);
-        setError(true);
+        setError('Something went wrong.', error.response.data.message);
       }
     }
   };
@@ -85,7 +84,7 @@ const AddPost = () => {
         <div className="form-container">
           <form className="form" onSubmit={formik.handleSubmit}>
             <div className="form-group">
-              {error && <p>Something went wrong. Try again later.</p>}
+              {error && error}
               <label htmlFor="exampleFormControlInput1">Title</label>
               <input
                 type="text"
