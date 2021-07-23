@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react';
 import axios from 'axios';
+
+import { useState, useEffect } from 'react';
 
 //COMPONENTS
 import Post from '../components/Post/Post';
 import Navbar from '../components/Navbar/Navbar';
 
-//AUTH
+//AUTH - PROTECT ROUTES
 import Auth from '../auth/Auth';
 
-//TOAST
+//TOAST MESSAGE
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -29,20 +30,22 @@ const Home = () => {
   };
 
   //GET POSTS
-  const fetchPosts = async () => {
+  const getPosts = async () => {
     try {
-      const data = await fetch(
+      const data = await axios.get(
         'https://jsonplaceholder.typicode.com/posts'
-      ).then((response) => response.json());
-      setPosts(data);
+      );
+      // ).then((response) => response.json());
+      setPosts(data.data);
     } catch (error) {
       setError(true);
-      console.log(error);
+      console.log('Something Went Wrong', error.response.data.message);
+      setError(true);
     }
   };
 
   useEffect(() => {
-    fetchPosts();
+    getPosts();
   }, []);
 
   //DELETE POSTS
@@ -52,15 +55,15 @@ const Home = () => {
         `https://jsonplaceholder.typicode.com/posts/${id}`
       );
 
-      if (response.status === 200) {
+      if (response) {
         const updatedPosts = posts.filter((post) => post.id !== id);
         setPosts(updatedPosts);
       }
       //TOASTY
       notify();
     } catch (error) {
+      console.log('Something went wrong.', error.response.data.message);
       setError(true);
-      console.log(error);
     }
   };
 
@@ -72,6 +75,7 @@ const Home = () => {
           <header>
             <h1>Your Daily Blog ✍ </h1>
           </header>
+          {error && <p>Something went wrong. Please refresh the page.</p>}
           <div className="blog__left">
             {posts &&
               posts

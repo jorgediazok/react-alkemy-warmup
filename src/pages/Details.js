@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import { useState, useEffect } from 'react';
 
 //ROUTING
@@ -20,21 +22,20 @@ const Details = () => {
   const id = location.pathname.split('/').pop();
 
   //GET POST
-  const fetchPost = async (id) => {
+  const getPost = async (id) => {
     try {
-      const data = await fetch(
+      const data = await axios.get(
         `https://jsonplaceholder.typicode.com/posts/${id}`
-      ).then((response) => response.json());
-      console.log(data);
-      setPost(data);
+      );
+      setPost(data.data);
     } catch (error) {
+      console.log('Something Went Wrong', error.response.data.message);
       setError(true);
-      console.log(error);
     }
   };
 
   useEffect(() => {
-    fetchPost(id);
+    getPost(id);
   }, [id]);
 
   return (

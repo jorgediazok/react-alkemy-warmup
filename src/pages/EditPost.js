@@ -1,9 +1,13 @@
+import axios from 'axios';
+
 import { useState, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import axios from 'axios';
 
 //COMPONENTS
 import Navbar from '../components/Navbar/Navbar';
+
+//AUTH
+import Auth from '../auth/Auth';
 
 //STYLES
 import '../styles/EditPost.css';
@@ -22,12 +26,11 @@ const EditPost = () => {
   //GET POST
   const fetchPost = async (id) => {
     try {
-      const data = await fetch(
+      const data = await axios.get(
         `https://jsonplaceholder.typicode.com/posts/${id}`
-      ).then((response) => response.json());
-      console.log(data);
-      setTitle(data.title);
-      setDescription(data.body);
+      );
+      setTitle(data.data.title);
+      setDescription(data.data.body);
     } catch (error) {
       setError(true);
       console.log(error);
@@ -53,36 +56,38 @@ const EditPost = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="form-container">
-        <form className="form">
-          <div className="form-group">
-            <label htmlFor="exampleFormControlInput1">Title</label>
-            <input
-              type="text"
-              className="form-control"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </div>
+      <Auth>
+        <Navbar />
+        <div className="form-container">
+          <form className="form">
+            <div className="form-group">
+              <label htmlFor="exampleFormControlInput1">Title</label>
+              <input
+                type="text"
+                className="form-control"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
 
-          <div className="form-group">
-            <label htmlFor="exampleFormControlTextarea1">Edit Post</label>
-            <textarea
-              className="form-control"
-              rows="5"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}></textarea>
-          </div>
+            <div className="form-group">
+              <label htmlFor="exampleFormControlTextarea1">Edit Post</label>
+              <textarea
+                className="form-control"
+                rows="5"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}></textarea>
+            </div>
 
-          <button
-            type="submit"
-            className="btn btn-primary btn-add"
-            onClick={updatePost}>
-            Edit
-          </button>
-        </form>
-      </div>
+            <button
+              type="submit"
+              className="btn btn-primary btn-add"
+              onClick={updatePost}>
+              Edit
+            </button>
+          </form>
+        </div>
+      </Auth>
     </>
   );
 };

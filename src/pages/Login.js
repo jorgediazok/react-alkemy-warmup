@@ -43,12 +43,12 @@ const Login = () => {
 
   //TOAST FUNCTION
   const notify = () => {
-    toast('Login Succesful', { position: toast.POSITION.TOP_LEFT });
+    toast('Login Succesful', { position: toast.POSITION.TOP_RIGHT });
   };
 
   //MAKE REQUEST TO ALKEMY TO GET ACCESS TOKEN
 
-  const onSubmit = async (values, actions) => {
+  const onSubmit = async (values) => {
     const { ...data } = values;
 
     const response = await axios
