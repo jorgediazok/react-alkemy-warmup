@@ -2,6 +2,7 @@
   padding: 20px;
   background-color: #ffffff;
   margin-top: 20px;
+  border-radius: 5px;
 }
 
 .card img {
@@ -41,6 +42,7 @@
   font-size: 20px;
   margin-top: 20px;
   margin-left: 25px;
+  color: #0275d8;
 }
 
 .card-button {

@@ -10,8 +10,8 @@ const Navbar = () => {
           <span className="navbar-brand mb-0 h1">Home</span>
         </Link>
         <span className="navbar__divider">|</span>
-        <Link to="/edit">
-          <span className="navbar-brand mb-0 h1">Edit Post</span>
+        <Link to="/add">
+          <span className="navbar-brand mb-0 h1">Add Post</span>
         </Link>
       </div>
     </nav>

@@ -11,18 +11,20 @@ import { FaTrash } from 'react-icons/fa';
 //STYLES
 import './Post.css';
 
-const Post = ({ posts }) => {
+const Post = ({ post, remove }) => {
   return (
     <div className="card">
       <img className="card-img-top" src={Image} alt="" />
       <div className="card-body">
-        <h5 className="card-title">{posts.title}</h5>
+        <h5 className="card-title">{post.title}</h5>
         <div className="card-actions">
-          <FiEdit2 className="card-edit" />
-          <Link to="/details/:id">
+          <Link to={`/edit/${post.id}`}>
+            <FiEdit2 className="card-edit" />
+          </Link>
+          <Link to={`/details/${post.id}`}>
             <button className="btn btn-primary card-button">Read More</button>
           </Link>
-          <FaTrash className="card-delete" />
+          <FaTrash className="card-delete" onClick={() => remove(post.id)} />
         </div>
       </div>
     </div>
